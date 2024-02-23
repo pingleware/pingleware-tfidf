@@ -1,0 +1,26 @@
+{
+  "name": "@pingleware/tf-idf",
+  "version": "1.0.0",
+  "description": "Node package for TF-IDF which stands for Transform Frequency Inverse Document Frequency",
+  "main": "index.js",
+  "files": [
+    "package.json",
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [],
+  "author": "PRESSPAGE ENTERTAINMENT INC dba PINGLEWARE <maintainers@pingleware.work>",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://pingleware.support"
+  },
+  "homepage": "https://github.com/pingleware/pingleware-tfidf",
+  "private": false,
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "engineStrict": true
+}
