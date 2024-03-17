@@ -42,7 +42,6 @@ const termFrequency = function (documents) {
     // gets rid of trailing spaces 
     const sentences = documents.split(".").map(item => item.trim());
     sentences[0] = sentences[0].substring(146);
-
     const TFVals = countWords(words_without_stopwords);
     const unique_words = uniqueWords(words_without_stopwords);
 

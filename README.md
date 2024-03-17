@@ -44,6 +44,85 @@ After a moment's hesitation, Ethan's fingers closed around the cool surface of t
 With the echo of the voice fading into the depths of the forest, Ethan embarked on a quest unlike any other, guided by the whispers of the woods and the boundless mysteries that awaited him.
 ```
 
+## .Net Console Version
+
+The .Net console version is a standalone executable built using .Net
+
+```
+dotnet new console --framework net8.0 --use-program-main
+```
+
+To build an executable, use
+
+```
+dotnet publish
+```
+
+the options are
+
+```
+Description:
+  Publisher for the .NET Platform
+
+Usage:
+  dotnet publish [<PROJECT | SOLUTION>...] [options]
+
+Arguments:
+  <PROJECT | SOLUTION>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.
+
+Options:
+  --ucr, --use-current-runtime         Use current runtime as the target runtime.
+  -o, --output <OUTPUT_DIR>            The output directory to place the published artifacts in.
+  --artifacts-path <ARTIFACTS_DIR>     The artifacts path. All output from the project, including build, publish, and pack output, will go in 
+                                       subfolders under the specified path.
+  --manifest <MANIFEST>                The path to a target manifest file that contains the list of packages to be excluded from the publish step.
+  --no-build                           Do not build the project before publishing. Implies --no-restore.
+  --sc, --self-contained               Publish the .NET runtime with your application so the runtime doesn't need to be installed on the target 
+                                       machine.
+                                       The default is 'false.' However, when targeting .NET 7 or lower, the default is 'true' if a runtime identifier 
+                                       is specified.
+  --no-self-contained                  Publish your application as a framework dependent application. A compatible .NET runtime must be installed on 
+                                       the target machine to run your application.
+  --nologo                             Do not display the startup banner or the copyright message.
+  -f, --framework <FRAMEWORK>          The target framework to publish for. The target framework has to be specified in the project file.
+  -r, --runtime <RUNTIME_IDENTIFIER>   The target runtime to publish for. This is used when creating a self-contained deployment.
+                                       The default is to publish a framework-dependent application.
+  -c, --configuration <CONFIGURATION>  The configuration to publish for. The default is 'Release' for NET 8.0 projects and above, but 'Debug' for 
+                                       older projects.
+  --version-suffix <VERSION_SUFFIX>    Set the value of the $(VersionSuffix) property to use when building the project.
+  --interactive                        Allows the command to stop and wait for user input or action (for example to complete authentication).
+  --no-restore                         Do not restore the project before building.
+  -v, --verbosity <LEVEL>              Set the MSBuild verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic].
+  -a, --arch <ARCH>                    The target architecture.
+  --os <OS>                            The target operating system.
+  --disable-build-servers              Force the command to ignore any persistent build servers.
+  -?, -h, --help                       Show command line help.
+```
+
+for the current build system
+
+```
+dotnet publish --output "dist" --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true
+```
+
+to specify the runtime, add --runtime with the configuration
+
+| OS                               | RUNTIME            | COMMAND                                                                                                                                                                           |
+| -------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Mac Apple Silicon                | osx-arm64          | `dotnet publish --output "dist/osx/arm64" --runtime osx-arm64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`                   |
+| Mac Intel                        | `osx-x64`        | `dotnet publish --output "dist/osx/x64" --runtime osx-x64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`                       |
+| Windows (x86)                    | win-x86            | `dotnet publish --output "dist/win/x86" --runtime win-x86 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`                      |
+| Windows (x64)                    | win-x64            | `dotnet publish --output "dist/win/x64" --runtime win-x64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`                       |
+| Windows (arm64)                  | win-arm64          | `dotnet publish --output "dist/win/arm64" --runtime win-arm64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`                   |
+| Linux (x64)                      | linux-x64          | `dotnet publish --output "dist/linux/x64" --runtime linux-x64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`                   |
+| Linux MUSL (x64)                 | linux-musl-x64     | `dotnet publish --output "dist`/linux/`musl/x64" --runtime linux-musl-x64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`     |
+| Linux MUSL (arm64)               | linux-musl-arm64   | `dotnet publish --output "dist`/linux/`musl/arm64" --runtime linux-musl-arm64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true` |
+| Linux (arm)<br />Raspberry Pi 2+ | linux-arm          | `dotnet publish --output "dist`/linux/`arm" --runtime linux-arm --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`               |
+| Linux (arm64)                    | linux-arm64        | `dotnet publish --output "dist/linux/arm64" --runtime linux-arm64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true`               |
+| Linux Bionic (arm64)             | linux-bionic-arm64 |                                                                                                                                                                                   |
+| iOS                              | ios-arm64          |                                                                                                                                                                                   |
+| Android                          | android-arm64      |                                                                                                                                                                                   |
+
 ## Installation
 
 `npm i @pingleware/tf-idf`

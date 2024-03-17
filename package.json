@@ -9,7 +9,19 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "dist": "npm run dist:osx:arm64 && npm run dist:osx:x64",
+    "build:dotnet": "dotnet build",
+    "start": "dotnet run input.txt",
+    "dist:osx:arm64": "dotnet publish --output 'dist/osx/arm64' --runtime osx-arm64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true",
+    "dist:osx:x64": "dotnet publish --output 'dist/osx/x64' --runtime osx-x64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true",
+    "dist:win:x64": "dotnet publish --output 'dist/win/x64' --runtime win-x64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true",
+    "dist:win:arm64": "dotnet publish --output 'dist/win/arm64' --runtime win-arm64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true",
+    "dist:linux:x64": "dotnet publish --output 'dist/linux/x64' --runtime linux-x64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true",
+    "dist:linux:arm": "dotnet publish --output 'dist/linux/arm' --runtime linux-arm --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true",
+    "dist:linux:arm64": "dotnet publish --output 'dist/linux/arm64' --runtime linux-arm64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true",
+    "dist:linux:musl:x64": "dotnet publish --output 'dist/linux/musl/x64' --runtime linux-musl-x64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true",
+    "dist:linux:musl:arm64": "dotnet publish --output 'dist/linux/musl/arm64' --runtime linux-musl-arm64 --configuration Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true"
   },
   "keywords": [],
   "author": "PRESSPAGE ENTERTAINMENT INC dba PINGLEWARE <maintainers@pingleware.work>",
